@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <title>Pregrado en Ingeniería Física</title>
+
+  <style>
+    main.detalle > div#container {
+      display: block !important;
+    }
+
+    main.detalle {
+      margin: 0;
+    }
+
+    .breadcrumb-class {
+      display: none !important;
+    }
+
+    @font-face {
+      font-family: 'Ancizar';
+      src: url('https://fcen.unal.edu.co/fileadmin/typography/Ancizar_Sans-Regular.otf') format('truetype');
+    }
+
+    @font-face {
+      font-family: 'Ancizar-serif';
+      src: url('https://fcen.unal.edu.co/fileadmin/typography/Ancizar_Serif-Bold_Italic.otf') format('truetype');
+    }
+
+    @font-face {
+      font-family: 'Ancizar-black';
+      src: url('https://fcen.unal.edu.co/fileadmin/typography/Ancizar_Sans_Black.otf') format('truetype');
+    }
+  </style>
+
+  <style>
+    :root {
+      --negro: #111111;
+      --blanco: #ffffff;
+      --gris-oscuro: #2D2D2D;
+      --gris: #7C7C7C;
+      --gris-claro: #cecece;
+      --gris-bg: #F3F3F3;
+      --azul-oscuro: #0B2E59;
+      --azul: #0c6896;
+      --azul-hover: #13477C;
+      --verde: #7AB317;
+      --amarillo: #ecb11a;
+      --naranja: #d44d13;
+      --rojo: #ba2424;
+      --rojo-hover: #b61d1d;
+      --morado: #2A044A;
+
+      --blanco-opacity-5: rgba(255, 255, 255, 0.5);
+      --blanco-opacity-7: rgba(255, 255, 255, 0.7);
+      --blanco-opacity-8: rgba(255, 255, 255, 0.8);
+      --blanco-opacity-9: rgba(255, 255, 255, 0.92);
+
+      --ancizar: 'Ancizar', Arial, sans-serif;
+      --ancizar-serif: 'Ancizar-serif', serif;
+      --ancizar-black: 'Ancizar-black', sans-serif;
+
+      --shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+      --radius: 8px;
+
+      --main-color: var(--rojo);
+      --main-color-hover: var(--rojo-hover);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Ancizar', Arial, sans-serif;
+      color: var(--gris-oscuro);
+      line-height: 1.45;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Ancizar-serif', serif;
+      margin-bottom: 0.5em;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .main-container {
+      background-color: var(--gris-bg);
+      overflow: hidden;
+    }
+
+    .fcen-icon {
+      margin-right: 0.8em;
+    }
+
+    .header-banner {
+      width: 100%;
+      min-height: 340px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      text-align: left;
+      padding: 2em;
+      color: var(--blanco);
+      position: relative;
+      line-height: 1;
+      overflow: hidden;
+    }
+
+    /* ── Slideshow de imágenes ── */
+    .banner-slides {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .banner-slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      opacity: 0;
+      transform: scale(1.07);
+      transition:
+        opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: opacity, transform;
+    }
+
+    .banner-slide.active {
+      opacity: 1;
+      transform: scale(1.0);
+    }
+
+    .header-banner::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(186,36,36,0.92) 0%, rgba(186,36,36,0.62) 45%, rgba(0,0,0,0.22) 100%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .header-banner::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(186, 36, 36, 0.92) 0%, rgba(186, 36, 36, 0.62) 45%, rgba(0, 0, 0, 0.22) 100%);
+    }
+
+    .banner-content {
+      position: relative;
+      z-index: 1;
+      margin: 4% auto;
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .banner-image img {
+      width: 115px;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 8px 18px rgba(0,0,0,0.22));
+    }
+
+    .banner-content h1 {
+      font-size: 4rem;
+      line-height: 0.95;
+      font-family: Ancizar-black, sans-serif;
+      margin-bottom: 10px;
+    }
+
+    .banner-content h3 {
+      line-height: 1;
+      font-size: 2rem;
+      font-family: Ancizar, sans-serif;
+      margin-bottom: 6px;
+    }
+
+    .codigo-snies {
+      font-size: 1.15rem;
+      margin-bottom: 1.2em;
+    }
+
+    .departamento {
+      font-size: 1.1rem;
+      padding: 0.5em 0;
+      margin-bottom: 1.2em;
+      border-bottom: 1px solid rgba(255,255,255,0.7);
+      display: inline-block;
+    }
+
+    .banner-btn {
+      display: inline-block;
+      background: var(--main-color);
+      color: var(--blanco);
+      padding: 0.9em 1.3em;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.3s ease, transform 0.2s ease;
+      font-family: var(--ancizar);
+      font-size: 18px;
+      letter-spacing: 0.2px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+
+    .banner-btn:hover {
+      background: var(--main-color-hover);
+      transform: translateY(-2px);
+    }
+
+    /* TARJETAS CORREGIDAS */
+    .info-cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(260px, 1fr));
+      gap: 28px;
+      max-width: 1200px;
+      margin: -80px auto 2em auto;
+      padding: 2em 1em;
+      position: relative;
+      z-index: 10;
+    }
+
+    .info-cards .card {
+      background: var(--blanco);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      padding: 2em 1.5em;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 220px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .info-cards .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 22px rgba(0,0,0,0.12);
+    }
+
+    .info-cards .card img {
+      max-width: 60px;
+      margin-bottom: 1em;
+    }
+
+    .info-cards .card i {
+      font-size: 50px;
+      color: var(--main-color);
+      margin-bottom: 15px;
+    }
+
+    .info-cards .card h3 {
+     margin-bottom: 0.5em;
+            color: var(--gris-oscuro)
+    }
+
+    .info-cards .card h3 a {
+      color: var(--main-color);
+    }
+
+    .info-cards .card p {
+      font-size: 1rem;
+      text-align: center;
+      color: var(--gris-oscuro);
+      line-height: 1.45;
+    }
+
+    .fcen-docentes-banner {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, #7d1717, var(--main-color));
+      border-radius: 16px;
+      padding: 40px 50px;
+      width: 100%;
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      box-shadow: 0 15px 30px rgba(125, 23, 23, 0.22);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .fcen-docentes-banner::after {
+      content: '';
+      position: absolute;
+      right: -50px;
+      top: -50px;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(255,255,255,0.10) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .fcen-docentes-text {
+      flex: 1;
+      z-index: 2;
+    }
+
+    .fcen-docentes-text h2 {
+      font-size: 2.2rem;
+      color: var(--blanco);
+      margin: 0 0 10px 0;
+      font-weight: 900;
+      line-height: 1.1;
+      font-family: 'Ancizar-black', sans-serif;
+    }
+
+    .fcen-docentes-text p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.92);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .fcen-docentes-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 18px 35px;
+      background: var(--blanco);
+      color: var(--main-color);
+      border-radius: 40px;
+      font-weight: 800;
+      font-size: 1.05rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.18);
+      z-index: 2;
+      white-space: nowrap;
+    }
+
+    .fcen-docentes-btn svg {
+      width: 24px;
+      height: 24px;
+      stroke: currentColor;
+      fill: none;
+      transition: transform 0.3s ease;
+    }
+
+    .fcen-docentes-btn:hover {
+      background: #f4f4f4;
+      transform: translateY(-3px);
+    }
+
+    .fcen-docentes-btn:hover svg {
+      transform: translateX(4px);
+    }
+
+    .why-section,
+    .profile-section,
+    .profile2-section,
+    .accordion-section {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .why-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 2em;
+      padding: 2em 1em;
+    }
+
+    .why-text,
+    .why-image {
+      flex: 1 1 300px;
+      min-width: 280px;
+    }
+
+    .why-text h2,
+    .accordion h2 {
+      color: var(--main-color);
+      margin-bottom: 1em;
+      line-height: 1.1;
+      font-family: 'Ancizar-black', sans-serif;
+      font-size: 2.5em;
+    }
+
+    .why-text p,
+    .why-text li {
+      margin-bottom: 0.8em;
+      text-align: justify;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .why-image img {
+      width: 90%;
+      height: auto;
+      display: block;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .profile-section {
+      margin: 3em auto;
+      background-color: var(--blanco-opacity-9);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5em;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 2em;
+    }
+
+    .profile2-section {
+      margin: 3em auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 2em;
+      padding: 2em;
+      border-radius: var(--radius);
+    }
+
+    .profile-bg {
+      background-color: var(--gris);
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.55)),
+        url('https://fcen.unal.edu.co/fileadmin/imagenes/programas/fondos/whitebg.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      padding: 2em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .profile-bg2 {
+      background-color: var(--gris-claro);
+      background-image:
+        linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+                /* Lighter Overlay */
+                url('https://fcen.unal.edu.co/fileadmin/imagenes/programas/fondos/9.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      padding: 2em;
+    }
+
+    .myul {
+      padding: 0 5%;
+      line-height: 1.5;
+    }
+
+    .myli {
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    .accordion-section {
+      margin: 1em auto 2em auto;
+      padding: 2em 1em;
+    }
+
+    .accordion-section h2 {
+      text-align: center;
+      margin-top: 0.5em;
+      margin-bottom: 1.2em;
+      font-family: 'Ancizar-black', sans-serif;
+      color: var(--main-color);
+      font-size: 2.5em;
+      display: block;
+      line-height: 1.1;
+    }
+
+    .accordion {
+      max-width: 1200px;
+      margin: 1em auto 2em auto;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .accordion-item {
+      border-bottom: 1px solid var(--gris-claro);
+    }
+
+    .accordion-header {
+      background: var(--blanco);
+      cursor: pointer;
+      padding: 1em 1.2em;
+      font-weight: bold;
+      position: relative;
+      transition: background 0.3s ease, color 0.3s ease;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 18px;
+    }
+
+    .accordion-header:hover {
+      background: var(--main-color);
+      color: var(--blanco);
+    }
+
+    .accordion-header::after {
+      content: '+';
+      font-size: 1.2em;
+      flex: 0 0 auto;
+    }
+
+    .accordion-header.active::after {
+      content: '-';
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.3s ease;
+      background: #fafafa;
+      font-size: 1.08em;
+    }
+
+    .accordion-content ul {
+      line-height: 1.6;
+      padding: 2% 2%;
+    }
+
+    .accordion-content ul li {
+      padding: 0.5em 0;
+      list-style-type: none;
+      font-size: 1em;
+    }
+
+    .accordion-content a {
+      color: var(--main-color);
+      font-weight: bold;
+    }
+
+    .accordion-content p {
+      text-align: justify;
+      padding: 1em;
+      margin-bottom: 1em;
+      line-height: 1.65;
+    }
+
+    .table-responsive-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 20px 0;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .table-prog {
+      width: 100%;
+      min-width: 600px;
+      border-collapse: collapse;
+      background-color: var(--blanco);
+      font-size: 15px;
+    }
+
+    .table-prog th {
+      background-color: var(--main-color);
+      color: var(--blanco);
+      padding: 15px;
+      text-align: left;
+      font-family: 'Ancizar-black', sans-serif;
+      border: 1px solid var(--gris-claro);
+    }
+
+    .table-prog td {
+      padding: 12px 15px;
+      border: 1px solid var(--gris-claro);
+      color: var(--gris-oscuro);
+      vertical-align: middle;
+    }
+
+    .table-prog tbody tr:nth-child(even) {
+      background-color: #fdf7f7;
+    }
+
+    .table-prog tbody tr:hover {
+      background-color: #f8ebeb;
+    }
+
+    .malla-img {
+      width: 80%;
+      height: auto;
+      margin: 0 auto;
+      border-radius: var(--radius);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      box-shadow: var(--shadow);
+      display: block;
+    }
+
+    .malla-img:hover {
+      transform: scale(1.03);
+      opacity: 0.9;
+    }
+
+    .cta-section {
+      background: var(--main-color);
+      color: var(--blanco);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5em 1em;
+      min-height: 350px;
+      gap: 2em;
+      flex-wrap: wrap;
+    }
+
+    .cta-section h2 {
+      font-size: 2rem;
+      margin-bottom: 0.5em;
+      line-height: 1.1;
+    }
+
+    .cta-section p {
+      font-size: 1.08rem;
+      margin-bottom: 1.2em;
+      line-height: 1.55;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: left;
+      gap: 1em;
+      flex-wrap: wrap;
+    }
+
+    .cta-buttons a {
+      background: var(--blanco);
+      color: var(--main-color);
+      padding: 0.8em 1.5em;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .cta-buttons a:hover {
+      background: #e6e6e6;
+      transform: translateY(-2px);
+    }
+
+    .cta-info-section {
+      flex: 1 1 300px;
+      max-width: 600px;
+      padding: 1em;
+    }
+
+    .cta-img-section {
+      flex: 1 1 300px;
+      max-width: 600px;
+      padding: 1em;
+    }
+
+    .cta-img-section img {
+      height: auto;
+      width: 100%;
+      margin: 0 auto;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .fcen-depmate-contact-container {
+      margin-top: 20px;
+      line-height: 1.6;
+    }
+
+    .fcen-depmate-contact-container p {
+      margin-bottom: 6px;
+    }
+
+    .entrance-animation {
+      opacity: 1;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    .entrance-animation > * {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      will-change: opacity, transform;
+    }
+
+    .entrance-animation.active > * {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 992px) {
+      .info-cards {
+        grid-template-columns: repeat(2, minmax(240px, 1fr));
+      }
+
+      .fcen-docentes-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 30px 28px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .banner-content {
+        margin: 0 auto;
+      }
+
+      .banner-content h1 {
+        font-size: 2.3rem;
+      }
+
+      .banner-content h3 {
+        font-size: 1.4rem;
+      }
+
+      .banner-image img {
+        width: 85px;
+      }
+
+      .why-section,
+      .profile-section,
+      .profile2-section {
+        flex-direction: column;
+      }
+
+      .info-cards {
+        grid-template-columns: 1fr;
+        margin: -30px auto 1em auto;
+        gap: 20px;
+      }
+
+      .fcen-docentes-text h2 {
+        font-size: 1.7rem;
+      }
+
+      .accordion-section h2,
+      .why-text h2 {
+        font-size: 2rem;
+      }
+
+      .malla-img {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<main class="main-container">
+
+  <header class="header-banner">    
+    <div class="banner-slides" aria-hidden="true">
+      <img class="banner-slide active" src="https://fcen.unal.edu.co/fileadmin/imagenes/baners_por_carrera/fisica/6.JPG" alt="">
+      <img class="banner-slide" src="https://fcen.unal.edu.co/fileadmin/imagenes/baners_por_carrera/fisica/DSC01918.JPG" alt="">
+      <img class="banner-slide" src="https://fcen.unal.edu.co/fileadmin/imagenes/baners_por_carrera/fisica/ENSEN__ANZA-76.jpg" alt="">
+      <img class="banner-slide" src="https://fcen.unal.edu.co/fileadmin/imagenes/baners_por_carrera/fisica/LABORATORIO_DE_FI__SICA-_AULA_104_LABORATORIO_MODERNA1.jpg" alt="">
+      <img class="banner-slide" src="https://fcen.unal.edu.co/fileadmin/imagenes/baners_por_carrera/fisica/LABORATORIO_DE_FI__SICA-_AULA_104_LABORATORIO_MODERNA2.jpg" alt="">
+      <img class="banner-slide" src="https://fcen.unal.edu.co/fileadmin/imagenes/baners_por_carrera/fisica/LABORATORIO_DE_FI__SICA_-_AULA_105_ELECTRICIDAD_Y_MAGNETISMO.1.jpg" alt="">
+      <img class="banner-slide" src="https://fcen.unal.edu.co/fileadmin/imagenes/baners_por_carrera/fisica/LABORATORIO_DE_FI__SICA_-_AULA_105_ELECTRICIDAD_Y_MAGNETISMO.2.jpg" alt="">
+      <img class="banner-slide" src="https://fcen.unal.edu.co/fileadmin/imagenes/baners_por_carrera/fisica/LABORATORIO_DE_FI__SICA_-_FI__SICA_MECA__NICA1.jpg" alt="">
+      <img class="banner-slide" src="https://fcen.unal.edu.co/fileadmin/imagenes/baners_por_carrera/fisica/LABORATORIO_DE_FI__SICA_-_FI__SICA_MECA__NICA2.jpg" alt="">
+      <img class="banner-slide" src="https://fcen.unal.edu.co/fileadmin/imagenes/baners_por_carrera/fisica/LABORATORIO_DE_FI__SICA_-_FI__SICA_MECA__NICA3.jpg" alt="">
+      <img class="banner-slide" src="https://fcen.unal.edu.co/fileadmin/imagenes/baners_por_carrera/fisica/LABORATORIO_DE_FI__SICA_-_FI__SICA_MECA__NICA4.jpg" alt="">
+      <img class="banner-slide" src="https://fcen.unal.edu.co/fileadmin/imagenes/baners_por_carrera/fisica/LABORATORIO_DE_FI__SICA_-_FI__SICA_MECA__NICA5.jpg" alt="">
+    </div>
+
+    <div class="banner-content">
+      <div class="banner-image">
+        <img src="https://fcen.unal.edu.co/fileadmin/imagenes/fotos_paginas_programas/iconos/fisica.png" alt="Ingeniería Física">
+      </div>
+      <div>
+        <p class="departamento"><i class="fa fa-university" style="margin-right: 8px;"></i>Departamento de Física &amp; Química</p>
+        <h3>Pregrado en</h3>
+        <h1>Ingeniería Física</h1>
+        <p class="codigo-snies">Créditos: 170 &ThinSpace;|&ThinSpace; Código SNIES: 16915</p>
+
+        <a href="https://sites.google.com/unal.edu.co/veeingenieriafisica/inicio?authuser=1" target="_blank" class="banner-btn">
+          Proceso de Re-acreditación CNA - 2026 <i class="fas fa-sign-in-alt" style="margin-left: 5px;"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <section id="info" class="info-cards entrance-animation">
+
+    <div class="card">
+      <img src="https://fcen.unal.edu.co/fileadmin/icons/calendario.svg" alt="Ícono calendario" />
+      <h3>Admisión y duración</h3>
+      <p>Admisión semestral - 10 semestres</p>
+    </div>   
+
+    <div class="card">  
+      <img src="https://fcen.unal.edu.co/fileadmin/icons/ubicacion.svg" alt="Ícono ubicación" /> 
+      <h3>Modalidad</h3>
+      <p>Presencial</p>
+    </div>
+
+    <div class="card">
+      <img src="https://fcen.unal.edu.co/fileadmin/icons/profesor.svg" alt="Ícono profesores" style="
+    height: 4.5rem;" />  
+      <h3>
+        <a href="https://fcen.unal.edu.co/menu/facultad/profesores/" target="_blank">
+          Profesores <i class="fas fa-external-link-alt" style="margin-left: 5px; font-size: 1.1rem;"></i>
+        </a>
+      </h3>
+      <p>Consulta el directorio docente de la Facultad</p>
+    </div>
+
+    <div class="card">
+      <img class="fas" src="https://fcen.unal.edu.co/fileadmin/icons/asignatura.svg"></img>
+      <h3>
+        <a href="https://fcen.unal.edu.co/index.php?id=589" target="_blank">
+          Asignaturas <i class="fas fa-external-link-alt" style="margin-left: 5px; font-size: 1.1rem;"></i>
+        </a>
+      </h3>
+      <p>Información detallada del plan de estudios y asignaturas</p>
+    </div>
+
+    <div class="card">
+      <img class="fas" src="https://fcen.unal.edu.co/fileadmin/icons/malla.svg"></img>
+      <h3>
+        <a href="https://mallas.manizales.unal.edu.co/facultades/cienciasExactasYNaturales/fisica/index.html" target="_blank">
+          Malla curricular <i class="fas fa-external-link-alt" style="margin-left: 5px; font-size: 1.1rem;"></i>
+        </a>
+      </h3>
+      <p>Estructura del programa y prerrequisitos</p>
+    </div>
+
+    <div class="card">
+      <img class="fas" src="https://fcen.unal.edu.co/fileadmin/icons/proyecto_educativo.svg"></img>
+      <h3>
+        <a href="https://fcen.unal.edu.co/menu/programas-academicos/proyectos-educativos-de-los-programas/" target="_blank">
+          Proyecto educativo <i class="fas fa-external-link-alt" style="margin-left: 5px; font-size: 1.1rem;"></i>
+        </a>
+      </h3>
+      <p>Consulta el PEP del programa</p>
+    </div>
+
+    <div class="fcen-docentes-banner">
+      <div class="fcen-docentes-text">
+        <h2>Rutas Curriculares</h2>
+        <p>
+          Explora trayectorias académicas sugeridas para orientar tu formación en Ingeniería Física de acuerdo con tus intereses en investigación, instrumentación, modelación y desarrollo tecnológico.
+        </p>
+      </div>
+      <a href="#rutas-curriculares" class="fcen-docentes-btn">
+        Explorar rutas
+        <svg aria-hidden="true" viewBox="0 0 24 24">
+          <path d="M5 12h14M12 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </a>
+    </div>
+
+  </section>
+
+  <section class="why-section entrance-animation">
+    <div class="why-text">
+      <h2>¿Por qué estudiar el Pregrado en Ingeniería Física?</h2>
+      <p>
+        La Ingeniería Física brinda al estudiante una sólida formación en ciencias básicas para aplicarlas a la tecnología desde una perspectiva científica, con el fin de proponer soluciones a problemas de ciencia e ingeniería empleando métodos y procedimientos propios de la física.
+      </p>
+    </div>
+    <div class="why-image">
+      <img src="https://fcen.unal.edu.co/fileadmin/imagenes/fotos_paginas_programas/nivelatorio-24.jpg" alt="Ingeniería Física">
+    </div>
+  </section>
+
+  <section class="entrance-animation profile-bg2">
+    <div class="profile-section">
+      <div class="why-image">
+        <img src="https://fcen.unal.edu.co/fileadmin/imagenes/fotos_paginas_programas/diapi.JPG" alt="Perfil del aspirante">
+      </div>
+      <div class="why-text">
+        <h2><i class="fas fa-user fcen-icon"></i>Perfil del aspirante</h2>
+        <p>
+          El aspirante al programa de Ingeniería Física debe tener inclinación preferencial por el manejo de las matemáticas y de la física, aptitudes analíticas y de cálculo matemático, capacidad de síntesis, interés científico y tecnológico, y disposición para enfrentar problemas desde diferentes puntos de vista.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="profile-bg entrance-animation">
+    <div class="profile2-section">
+      <div class="why-text">
+        <h2><i class="fas fa-user-graduate fcen-icon"></i>Perfil profesional</h2>
+        <ul class="myul">
+          <li class="myli">Capacidad para participar en trabajo interdisciplinario e investigativo en la industria.</li>
+          <li class="myli">Sólida formación en ciencias básicas que permita operar adecuadamente modelos teóricos y herramientas matemáticas en Física, Química y Biología.</li>
+          <li class="myli">Formación experimental para el manejo de técnicas en metrología e instrumentación y para el análisis y desarrollo de sistemas físicos, fisicoquímicos y biofísicos.</li>
+          <li class="myli">Habilidad para identificar, diagnosticar y planear soluciones a problemas de investigación y desarrollo en áreas como magnetismo, materiales, óptica, optoelectrónica, plasma, instrumentación electrónica, desarrollo de software y biofísica.</li>
+        </ul>
+      </div>
+      <div class="why-image">
+        <img src="https://fcen.unal.edu.co/fileadmin/imagenes/fotos_paginas_programas/encuentro_intersedes-091.jpg" alt="Perfil profesional">
+      </div>
+    </div>
+  </section>
+
+  <section id="rutas-curriculares" class="accordion-section entrance-animation">
+    <h2>Información General</h2>
+
+    <div class="accordion">
+
+      <div class="accordion-item">
+        <div class="accordion-header">
+          <p><i class="fas fa-file fcen-icon"></i>Normatividad</p>
+        </div>
+        <div class="accordion-content">
+          <ul class="myul">
+            <li class="myli"><strong>Proceso de Formación:</strong> <a href="http://www.legal.unal.edu.co/rlunal/home/doc.jsp?d_i=34245">Acuerdo 033 de 2007, Consejo Superior Universitario</a></li>
+            <li class="myli"><strong>Bienestar y Convivencia:</strong> <a href="http://www.legal.unal.edu.co/rlunal/home/doc.jsp?d_i=37192">Acuerdo 044 de 2009, Consejo Superior Universitario</a></li>
+            <li class="myli"><strong>Movilidad Académica:</strong> <a href="http://www.legal.unal.edu.co/rlunal/home/doc.jsp?d_i=98445">Resolución 13 de 2021, Vicerrectoría Académica</a></li>
+            <li class="myli"><strong>Traslado:</strong> <a href="http://www.legal.unal.edu.co/rlunal/home/doc.jsp?d_i=66330">Acuerdo 089 de 2014, Consejo Académico</a></li>
+            <li class="myli"><strong>Trabajo de Grado:</strong> <a href="http://www.legal.unal.edu.co/rlunal/home/doc.jsp?d_i=39262">Resolución CFCEN-80 de 2010</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header">
+          <p><i class="fas fa-laptop fcen-icon"></i>Proceso de Admisión</p>
+        </div>
+        <div class="accordion-content">
+          <ul class="myul">
+            <li class="myli"><strong>1. Consultar la normativa y la oferta académica:</strong>
+              <ul class="myul">
+                <li class="myli"><a href="https://admisiones.unal.edu.co/pregrado/guia-paso-a-paso-pregrado/">Guía paso a paso para aspirantes</a></li>
+                <li class="myli"><a href="https://admisiones.unal.edu.co/pregrado/oferta-de-programas-curriculares/">Oferta de programas curriculares</a></li>
+                <li class="myli"><a href="https://admisiones.unal.edu.co/pregrado/leer-la-normativa/">Normativa vigente de admisión</a></li>
+              </ul>
+            </li>
+            <li class="myli"><strong>2. Pagar los derechos de inscripción:</strong>
+              <p>Realizar el pago correspondiente dentro del periodo establecido en el calendario de admisiones.</p>
+            </li>
+            <li class="myli"><strong>3. Formalizar la inscripción:</strong>
+              <p>Completar el formulario en línea y generar el comprobante de inscripción.</p>
+            </li>
+            <li class="myli"><strong>4. Consultar la citación para la prueba de admisión:</strong>
+              <p>Verificar fecha, hora y lugar asignado para presentar la prueba.</p>
+            </li>
+            <li class="myli"><strong>5. Presentar la prueba de admisión:</strong>
+              <p>Asistir en la fecha indicada siguiendo las instrucciones institucionales.</p>
+            </li>
+            <li class="myli"><strong>6. Consultar los resultados de la prueba:</strong>
+              <p>Ingresar al portal de admisiones para verificar el puntaje obtenido.</p>
+            </li>
+            <li class="myli"><strong>7. Inscribir el programa curricular deseado:</strong>
+              <p>Si el puntaje lo permite, registrar el programa curricular de interés.</p>
+            </li>
+            <li class="myli"><strong>8. Consultar los resultados de admitidos:</strong>
+              <p>Verificar en el portal si fue admitido al programa.</p>
+            </li>
+            <li class="myli"><strong>9. Realizar la matrícula:</strong>
+              <p>Completar el proceso según las fechas e indicaciones oficiales.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      
+
+      <div class="accordion-item">
+        <div class="accordion-header">
+          <p><i class="fas fa-route fcen-icon"></i>Rutas Curriculares</p>
+        </div>
+        <div class="accordion-content">
+          <p>
+            Las rutas curriculares permiten al estudiante identificar trayectorias de formación según sus intereses académicos y profesionales. Este componente puede fortalecerse más adelante con enlaces o documentos específicos por ruta, siguiendo el mismo enfoque usado en la página de Matemáticas.
+          </p>
+
+          <div class="table-responsive-wrapper">
+            <table class="table-prog">
+              <thead>
+                <tr>
+                  <th>Ruta / Enfoque</th>
+                  <th>Descripción</th>
+                  <th>Proyección</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Instrumentación y metrología</td>
+                  <td>Formación orientada al desarrollo y operación de sistemas de medición, sensores e instrumentación científica e industrial.</td>
+                  <td>Laboratorios, industria, control de calidad, automatización.</td>
+                </tr>
+                <tr>
+                  <td>Materiales y óptica</td>
+                  <td>Énfasis en fenómenos físicos relacionados con materiales, óptica, optoelectrónica y aplicaciones tecnológicas.</td>
+                  <td>Investigación aplicada, industria de materiales, tecnologías ópticas.</td>
+                </tr>
+                <tr>
+                  <td>Modelación y desarrollo tecnológico</td>
+                  <td>Uso de herramientas matemáticas, computacionales y experimentales para resolver problemas de ingeniería y física aplicada.</td>
+                  <td>I+D, simulación, desarrollo de software científico y tecnológico.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header">
+          <p><i class="fas fa-tags fcen-icon"></i>Plan de Estudios</p>
+        </div>
+        <div class="accordion-content">
+          <ul class="myul">
+            <li class="myli"><strong>Norma vigente del plan de estudios:</strong> <a href="https://legal.unal.edu.co/rlunal/home/doc.jsp?d_i=39287">Resolución CFCEN-060 de 2008</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="cta-section entrance-animation">
+    <div class="cta-img-section">
+      <img src="https://fcen.unal.edu.co/fileadmin/imagenes/fotos_paginas_programas/IBA_-_OCT-11.jpg" alt="Ingeniería Física">
+    </div>
+    <div class="cta-info-section">
+      <h2>¿Preparado para dar un salto en tu vida profesional?</h2>
+      <p>Inscríbete hoy y transforma tu futuro con el Pregrado en Ingeniería Física.</p>
+
+      <div class="fcen-depmate-contact-container">
+        <p><strong>Coordinador:</strong> Luis Fernando Mulcue</p>
+        <p><strong>Correo electrónico:</strong> caringfis_man@unal.edu.co</p>
+        <p><strong>Dirección:</strong> Manizales Campus La Nubia Bloque W-221</p>
+        <p><strong>Extensión:</strong> 55760</p>
+      </div>
+
+      <div class="cta-buttons">
+        <a href="https://admisiones.unal.edu.co/pregrado/guia-paso-a-paso-pregrado" target="_blank">
+          Más información <i class="fas fa-external-link-alt" style="margin-left: 5px;"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  (function () {
+    const slides = document.querySelectorAll('.banner-slide');
+    let current = 0;
+    let timer = null;
+
+    function goTo(next) {
+      slides[current].classList.remove('active');
+      current = next;
+      slides[current].classList.add('active');
+    }
+
+    function advance() {
+      goTo((current + 1) % slides.length);
+    }
+
+    function startTimer() {
+      timer = setInterval(advance, 3000);
+    }
+
+    startTimer();
+  })();
+</script>
+
+<script>
+  const accordionHeaders = document.querySelectorAll('.accordion-header');
+  accordionHeaders.forEach(header => {
+    header.addEventListener('click', () => {
+      accordionHeaders.forEach(h => {
+        if (h !== header) {
+          h.classList.remove('active');
+          const otherContent = h.nextElementSibling;
+          otherContent.style.maxHeight = null;
+          otherContent.style.padding = "0 1em";
+        }
+      });
+
+      header.classList.toggle('active');
+      const content = header.nextElementSibling;
+      if (header.classList.contains('active')) {
+        content.style.maxHeight = content.scrollHeight + "px";
+        content.style.padding = "1em";
+      } else {
+        content.style.maxHeight = null;
+        content.style.padding = "0 1em";
+      }
+    });
+  });
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const sections = document.querySelectorAll(".entrance-animation");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+  });
+</script>
+
+</body>
+</html>
